@@ -60,8 +60,8 @@ class AnnualReturnsImport implements ToModel, WithHeadingRow, WithChunkReading,W
       return [
           'surname'             => 'required|max:50',
           'othernames'            =>  'required|max:50',
-          'staff_tin_number'              => 'required|numeric|max:10',
-          'total_months_worked'    => 'required|numeric|min:1|max:12',
+          'staff_tin_number'              => 'required|max:11',
+          'number_of_months_worked'    => 'required|min:1|max:12',
           'basic_salary'          => "required|regex:/^\d*(\.\d{1,2})?$/",
           'housing_allowance'          => "required|regex:/^\d*(\.\d{1,2})?$/",
           'transport_allowance'             => "required|regex:/^\d*(\.\d{1,2})?$/",

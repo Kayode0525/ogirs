@@ -182,7 +182,7 @@
 						<!--begin::Entry-->
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
-							<div class="container" style="min-width: 1300px">
+							<div class="container" >
 								<div id="page-head" style="margin-top: -30px;">
 
 								<div class="pad-all text-center" style="color: white;">

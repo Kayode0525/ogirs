@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.front.front')
 
 
 @section('headlinks')
@@ -14,10 +14,31 @@
             <div class="card">
                 <!--begin::Body-->
                 <div class="card-body pt-4">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-
+                    <form method="POST" action="{{ route('authenticate') }}">
                         
+                    @csrf
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                   @endif
+
+                        <div class="align-items-center mb-7 ">
+                            <h3
+                                class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">
+                                Welcome!</h3>
+                            <span class="text-muted font-weight-bold font-size-sm">No Login
+                                Details?
+                                <a href="{{ route('tin_home') }}" id="kt_login_signup"
+                                    class="text-primary font-weight-bolder">Create an
+                                    Account</a></span>
+                        </div>
                         <div class="form-group">
                             <label class="text-dark" for="userName">Email</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -39,23 +60,17 @@
                                     </span>
                                 @enderror
                         </div>
-
-                        <div class="form-group">
-                            <label class="text-dark" for="confirm-password"> Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
+                                    {{ __('Login') }}
                                 </button>
 
-                               
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                 </form>
